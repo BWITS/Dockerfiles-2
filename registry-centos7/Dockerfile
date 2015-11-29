@@ -12,10 +12,10 @@ RUN yum install -y -q openssh-server passwd; yum clean all
 RUN echo 'password' | passwd root --stdin
 RUN ssh-keygen -A
 
-# authentication
-RUN yum install -y -q nginx httpd-tools; yum clean all
-RUN htpasswd -b -c /etc/nginx/docker-registry.htpasswd root password
-ADD docker-registry.conf /etc/nginx/conf.d/docker-registry.conf
+## authentication
+#RUN yum install -y -q nginx httpd-tools; yum clean all
+#RUN htpasswd -b -c /etc/nginx/docker-registry.htpasswd root password
+#ADD docker-registry.conf /etc/nginx/conf.d/docker-registry.conf
 
 ADD run-registry.sh /opt/registry/run-registry.sh
 RUN chmod -v 755 /opt/registry/run-registry.sh
